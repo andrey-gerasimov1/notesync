@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NoteSync</title>
+</head>
+<body>
+    <h1>Notes</h1>
+
+    <form action="/add" method="post">
+        <textarea name="content" rows="3" cols="40" placeholder="Write a new note..." required></textarea><br>
+        <button type="submit">Add Note</button>
+    </form>
+
+    <ul>
+    {% for note in notes %}
+        <li>
+            {{ note.content }}
+            <a href="{{ url_for('edit', id=note.id) }}">Edit</a>
+            <a href="{{ url_for('delete', id=note.id) }}">Delete</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
